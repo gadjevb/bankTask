@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 const History = ({history, 'data-testid': dataTestId}) => {
+
   const rows = history.map((row, index) => {
     return (
       <tr key={index}>

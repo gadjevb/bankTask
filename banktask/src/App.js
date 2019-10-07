@@ -19,7 +19,7 @@ const App = () => {
       <div className="App">
         <Header data-test='Header Component'/>
         <Route exact path='/' render={() => <Transaction />} data-testid='Transaction Page Route' />
-        <Route exact path='/create' render={() => <CreateAccount />} data-testid='Create Account Page Route' />
+        <Route exact path='/create' render={(props) => <CreateAccount {...props}/>} data-testid='Create Account Page Route' />
       </div>
     </BrowserRouter>
   );

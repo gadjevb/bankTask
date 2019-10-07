@@ -124,4 +124,3 @@ describe('App component', () => {
     expect(createAccountRouter.length).toBe(1);
   });
 });
-  

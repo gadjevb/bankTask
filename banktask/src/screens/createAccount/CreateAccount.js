@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import InputField from '../../components/InputField/InputField';
 import Dropdown from 'react-dropdown';
@@ -8,7 +8,7 @@ import 'react-dropdown/style.css';
 import './styles.scss';
 import { createAccount } from '../../redux/modules/account/actions';
 
-const CreateAccount = () => {
+const CreateAccount = ({history}) => {
 
   const dispatch = useDispatch();
   const [iban, setIban] = useState('');
@@ -35,6 +35,7 @@ const CreateAccount = () => {
       setAddAccountWarning('');
       setIban('');
       setCurrency('');
+      history.push('/');
     }
     else {
       if(ibanIsFree === false) { setAddAccountWarning('This account IBAN is already taken!'); }
@@ -66,4 +67,4 @@ const CreateAccount = () => {
   )
 }
 
-export default CreateAccount;
+export default withRouter(CreateAccount);

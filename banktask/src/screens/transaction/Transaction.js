@@ -62,6 +62,15 @@ const Transaction = () => {
     }
   }
 
+  const balanceLabel = (id) => {
+    if((/_\w{9}/).test(id)) {
+      return `${accounts[id].currency} ${accounts[id].balance}`;
+    }
+    else {
+      return '';
+    }
+  }
+
   return (
         <div data-testid='transactionComponent'>
             <Dropdown
@@ -101,7 +110,7 @@ const Transaction = () => {
               onClick={onDeleteClick}
               data-testid='deleteButtonComponent'
               buttonText='Delete Account'/>
-            <p className='balance-section' data-testid='currentBalance'>Current balance: {(/_\w{9}/).test(id) ? accounts[id].balance : ''} </p>
+            <p className='balance-section' data-testid='currentBalance'>Current balance: {balanceLabel(id)} </p>
             <p className='submit-warning' data-testid='submitWarning'>{submitWarning}</p>
             <History history={(/_\w{9}/).test(id) ? accounts[id].history : []} data-testid='History Component'/>
         </div>

@@ -39,9 +39,8 @@ const Transaction = () => {
     let idPatternTest = (/_\w{9}/).test(id);
     let amountPatternTest = (/^[0-9]+([.,][0-9]{0,2})?$/).test(amount);
     let transactionTypePatternTest = (/^(Deposit)$|^(Withdraw)$/).test(transactionType);
-    
     if(idPatternTest && amountPatternTest && transactionTypePatternTest) {
-      dispatch(updateAccount(id, amount, transactionType))
+      dispatch(updateAccount(id, amount, transactionType));
       setAmount('');
       setTransactionType('');
       setSubmitWarning('');
@@ -56,9 +55,11 @@ const Transaction = () => {
       setSubmitWarning('Please select an account to delete!')
     }
     else {
-      dispatch(deleteAccount(id));
-      setSubmitWarning('');
-      setId('');
+      if(window.confirm('Do you really want to remove this bank account?')) {
+        dispatch(deleteAccount(id));
+        setSubmitWarning('');
+        setId('');
+      }
     }
   }
 
